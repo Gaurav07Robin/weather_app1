@@ -3,12 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import SearchBox from './SearchBox';
 import { Link } from 'react-router-dom';
 
-interface CitiesTableProps {
-  favCity: string;
-  isFavourite: boolean;
-}
 
-const CitiesTable: React.FC<CitiesTableProps> = ({  favCity: favCity, isFavourite }) => {
+const CitiesTable = () => {
   const history = useNavigate();
   const [cities, setCities] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -25,13 +21,7 @@ const CitiesTable: React.FC<CitiesTableProps> = ({  favCity: favCity, isFavourit
   const[value2, setValue2] = useState('');
   const[value3, setValue3] = useState('');
   const [currentLocation, setCurrentLocation] = useState<{ lati: number | null, longi: number | null }>({ lati: null, longi: null });
-  let navigate = useNavigate();
-
-  let favCityArray: string[] = [];
-
-  if (favCity && isFavourite) {
-    favCityArray = [...favCityArray, favCity];
-  }
+  
   
 
 
@@ -88,27 +78,27 @@ const CitiesTable: React.FC<CitiesTableProps> = ({  favCity: favCity, isFavourit
 
 
  
-  const handleFetchLocation = () => {
-    console.log('Location icon clicked');
+  // const handleFetchLocation = () => {
+  //   console.log('Location icon clicked');
     
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCurrentLocation({
-            lati: position.coords.latitude,
-            longi: position.coords.longitude,
-          });
-          // Navigate to the new weather page with latitude and longitude as parameters
-          navigate(`/weather/${position.coords.latitude}/${position.coords.longitude}`);
-        },
-        (error) => {
-          console.error('Error getting geolocation:', error);
-        }
-      );
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-    }
-  };
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         setCurrentLocation({
+  //           lati: position.coords.latitude,
+  //           longi: position.coords.longitude,
+  //         });
+  //         // Navigate to the new weather page with latitude and longitude as parameters
+  //         navigate(`/weather/${position.coords.latitude}/${position.coords.longitude}`);
+  //       },
+  //       (error) => {
+  //         console.error('Error getting geolocation:', error);
+  //       }
+  //     );
+  //   } else {
+  //     console.error('Geolocation is not supported by this browser.');
+  //   }
+  // };
 
 
   useEffect(() => {
@@ -248,7 +238,7 @@ const CitiesTable: React.FC<CitiesTableProps> = ({  favCity: favCity, isFavourit
          
       </div>
       <div className='searchbox'>
-      <i className="bi bi-geo" onClick={handleFetchLocation}></i>
+      
         <SearchBox
           placeholder="Search cities..."
           options={cities.map(city => city.name)}

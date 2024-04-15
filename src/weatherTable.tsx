@@ -146,8 +146,8 @@ useEffect(() => {
 
     </div>
         <h2>Weather for {cityName}</h2>
-        <i className={`bi bi-heart ${isFavourite ? 'filled' : ''}fs-3`} onChange={handleFavouriteChange}></i>
-        <CitiesTable favCity = {favCity} isFavourite = {isFavourite}/>
+        
+        
 
         {/* <label htmlFor="unit">Select Unit:</label>
         <select id="unit" value={unit} onChange={handleUnitChange}>

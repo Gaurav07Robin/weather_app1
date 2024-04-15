@@ -16,7 +16,7 @@ function App() {
     <div >
     <Router>
      <Routes>
-        <Route path="/" element={<CitiesTable favCity= {favCity} isFavourite = {isFavourite}/>} />
+        <Route path="/" element={<CitiesTable/>} />
        
         <Route path="/weather/:cityName" element={<WeatherTable/>} />
         <Route path="/weather/:lati/:longi" element={<SelfWeather/>} />
